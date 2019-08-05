@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+run_tests() {
+    exercise="$1"
+    cd "$exercise"
+    mv example.tcl $exercise.tcl
+    echo -n "$exercise: "
+    ./test.tcl
+    cd ..
+}
+
+cd exercises
+for exercise in $@
+do
+    run_tests $exercise
+done
